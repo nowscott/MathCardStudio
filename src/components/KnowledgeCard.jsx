@@ -20,7 +20,7 @@ function Tag({ children, tone = "sky" }) {
   };
 
   return (
-    <span className={`inline-flex h-8 items-center justify-center rounded-full border px-4 text-sm font-bold leading-none ${tones[tone] || tones.sky}`}>
+    <span className={`inline-flex h-7 items-center justify-center rounded-full border px-3.5 text-xs font-bold leading-none ${tones[tone] || tones.sky}`}>
       <span className="tag-text">{children}</span>
     </span>
   );
@@ -43,30 +43,30 @@ function PointBlock({ point, index }) {
   const Icon = point.icon || Lightbulb;
 
   return (
-    <section className="rounded-[1.75rem] border border-slate-100 bg-white/90 p-4 shadow-soft">
-      <div className="grid gap-4 sm:grid-cols-[52px_1fr] sm:items-start">
-        <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-50 to-teal-50 text-sky-500 shadow-soft">
-          <Icon size={22} />
+    <section className="rounded-[1.5rem] border border-slate-100 bg-white/90 p-3 shadow-soft">
+      <div className="grid gap-3 sm:grid-cols-[44px_1fr] sm:items-start">
+        <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-sky-100 bg-gradient-to-br from-sky-50 to-teal-50 text-sky-500 shadow-soft">
+          <Icon size={20} />
         </div>
         <div className="min-w-0">
-          <div className="mb-2 flex flex-wrap items-center gap-2">
+          <div className="mb-1.5 flex flex-wrap items-center gap-2">
             <Tag tone="orange">{point.label}</Tag>
-            <span className="inline-flex h-8 items-center justify-center rounded-full border border-slate-100 bg-slate-50 px-4 text-sm font-bold leading-none text-slate-400">
+            <span className="inline-flex h-7 items-center justify-center rounded-full border border-slate-100 bg-slate-50 px-3.5 text-xs font-bold leading-none text-slate-400">
               <span className="tag-text">模块 {index + 1}</span>
             </span>
           </div>
-          <h3 className="text-xl font-black leading-snug text-slate-700">{point.title}</h3>
+          <h3 className="text-lg font-black leading-snug text-slate-700">{point.title}</h3>
         </div>
       </div>
 
       {point.visual && (
-        <div className="mt-4 rounded-[1.5rem] border border-sky-100 bg-gradient-to-br from-sky-50 via-white to-teal-50 p-3">
+        <div className="compact-visual mt-3 rounded-[1.35rem] border border-sky-100 bg-gradient-to-br from-sky-50 via-white to-teal-50 p-2">
           {point.visual}
         </div>
       )}
 
-      <div className="mt-4 rounded-[1.5rem] border border-sky-100 bg-sky-50/70 p-3 text-sm leading-7 text-slate-700">
-        <div className="mb-2 flex items-center gap-2 font-black text-sky-700">
+      <div className="mt-3 rounded-[1.35rem] border border-sky-100 bg-sky-50/70 p-3 text-sm leading-6 text-slate-700">
+        <div className="mb-1.5 flex items-center gap-2 font-black text-sky-700">
           <Sparkles size={16} />
           核心结论
         </div>
@@ -75,7 +75,7 @@ function PointBlock({ point, index }) {
       </div>
 
       {point.chain && (
-        <div className="mt-4 flex items-center gap-2 overflow-x-auto rounded-[1.5rem] border border-sky-100 bg-gradient-to-r from-sky-50 via-white to-teal-50 px-4 py-3 text-sm font-bold text-sky-700">
+        <div className="mt-3 flex items-center gap-2 overflow-x-auto rounded-[1.35rem] border border-sky-100 bg-gradient-to-r from-sky-50 via-white to-teal-50 px-3 py-2 text-sm font-bold text-sky-700">
           {point.chain.map((item, chainIndex) => (
             <span className="flex items-center gap-2 whitespace-nowrap" key={item}>
               <span className="rounded-full border border-white bg-white px-3 py-1 shadow-soft">{item}</span>
@@ -86,10 +86,10 @@ function PointBlock({ point, index }) {
       )}
 
       {point.formulas && (
-        <div className="mt-4 grid gap-2">
+        <div className="mt-3 grid gap-2">
           {point.formulas.map((formula) => (
             <div
-              className="grid gap-2 rounded-[1.25rem] border border-slate-100 bg-slate-50/80 px-4 py-2.5 sm:grid-cols-[112px_1fr] sm:items-center"
+              className="grid gap-2 rounded-[1.15rem] border border-slate-100 bg-slate-50/80 px-4 py-2 sm:grid-cols-[112px_1fr] sm:items-center"
               key={formula.name}
             >
               <span className="text-sm font-bold text-slate-500">{formula.name}</span>
@@ -99,18 +99,18 @@ function PointBlock({ point, index }) {
         </div>
       )}
 
-      <div className="mt-4 rounded-[1.5rem] border border-teal-100 bg-teal-50/70 p-3">
-        <div className="mb-3 flex items-center gap-2 text-sm font-black text-teal-700">
+      <div className="mt-3 rounded-[1.35rem] border border-teal-100 bg-teal-50/70 p-3">
+        <div className="mb-2 flex items-center gap-2 text-sm font-black text-teal-700">
           <ListChecks size={17} />
           推导与解题步骤
         </div>
-        <ol className="space-y-1.5">
+        <ol className="space-y-1">
           {point.steps.map((step, stepIndex) => (
             <li
-              className="grid grid-cols-[28px_1fr] gap-3 rounded-2xl border border-white/80 bg-white/90 px-3 py-1.5 text-sm leading-6 text-slate-700"
+              className="grid grid-cols-[26px_1fr] gap-3 rounded-2xl border border-white/80 bg-white/90 px-3 py-1.5 text-sm leading-6 text-slate-700"
               key={step}
             >
-              <span className="flex h-7 w-7 items-center justify-center rounded-full border border-teal-100 bg-teal-50 text-xs font-black text-teal-600">
+              <span className="flex h-6 w-6 items-center justify-center rounded-full border border-teal-100 bg-teal-50 text-xs font-black text-teal-600">
                 {stepIndex + 1}
               </span>
               <span>{step}</span>
@@ -120,7 +120,7 @@ function PointBlock({ point, index }) {
       </div>
 
       {point.theorem && (
-        <div className="mt-4 rounded-[1.5rem] border border-orange-100 bg-orange-50/80 p-3 text-sm leading-7 text-slate-700">
+        <div className="mt-3 rounded-[1.35rem] border border-orange-100 bg-orange-50/80 p-3 text-sm leading-6 text-slate-700">
           <strong className="font-bold text-slate-700">高频提醒：</strong>
           {point.theorem}
         </div>
@@ -133,7 +133,7 @@ function ReviewStrip({ items }) {
   if (!items?.length) return null;
 
   return (
-    <div className="grid gap-2 rounded-[1.5rem] border border-emerald-100 bg-emerald-50/75 p-4 sm:grid-cols-3">
+    <div className="grid gap-2 rounded-[1.35rem] border border-emerald-100 bg-emerald-50/75 p-3 sm:grid-cols-3">
       {items.map((item) => (
         <div className="flex items-center gap-2 text-sm font-bold leading-5 text-emerald-700" key={item}>
           <CheckCircle2 size={16} className="shrink-0" />
@@ -160,9 +160,9 @@ export function KnowledgeImageCard({ block, card, index, total, registerCardRef,
       </div>
 
       <article ref={registerCardRef(card.id)} className="card-surface aspect-[9/16] overflow-hidden">
-        <div className="card-page-content flex h-full flex-col">
-          <div className="shrink-0 bg-gradient-to-br from-sky-50 via-white to-teal-50 p-5">
-            <div className="mb-4 flex flex-wrap gap-2">
+        <div className="flex h-full flex-col bg-gradient-to-b from-sky-50 via-white to-sky-50/50">
+          <div className="shrink-0 bg-gradient-to-br from-sky-50 via-white to-teal-50 p-4">
+            <div className="mb-3 flex flex-wrap gap-2">
               <Tag>{block.stage}</Tag>
               <Tag tone="teal">{block.category}</Tag>
               {card.tags.map((tag) => (
@@ -172,18 +172,18 @@ export function KnowledgeImageCard({ block, card, index, total, registerCardRef,
               ))}
             </div>
 
-            <div className="rounded-[1.75rem] border border-white/90 bg-white/80 p-4 shadow-soft">
+            <div className="rounded-[1.5rem] border border-white/90 bg-white/80 p-3 shadow-soft">
               <p className="text-xs font-black uppercase tracking-[0.18em] text-sky-400">{block.title}</p>
-              <h2 className="mt-2 text-2xl font-black tracking-tight text-slate-700">{card.title}</h2>
-              <p className="mt-2 text-sm font-semibold leading-6 text-slate-500">{card.subtitle}</p>
-              <p className="mt-3 rounded-[1.25rem] border border-slate-100 bg-slate-50/80 p-3 text-sm leading-6 text-slate-600">
+              <h2 className="mt-2 text-[1.7rem] font-black leading-tight tracking-tight text-slate-700">{card.title}</h2>
+              <p className="mt-1.5 text-sm font-semibold leading-6 text-slate-500">{card.subtitle}</p>
+              <p className="mt-2.5 rounded-[1.15rem] border border-slate-100 bg-slate-50/80 p-2.5 text-sm leading-6 text-slate-600">
                 {card.summary}
               </p>
             </div>
           </div>
 
-          <div className="flex min-h-0 flex-1 flex-col justify-between gap-4 bg-gradient-to-b from-white to-sky-50/50 p-4">
-            <div className="space-y-4">
+          <div className="flex min-h-0 flex-1 flex-col justify-between gap-3 p-3.5">
+            <div className="space-y-3">
               {card.points.map((point, pointIndex) => (
                 <PointBlock index={pointIndex} key={point.title} point={point} />
               ))}

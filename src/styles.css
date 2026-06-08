@@ -46,13 +46,6 @@
     @apply rounded-[2rem] border border-white/70 bg-white/95 shadow-card backdrop-blur;
   }
 
-  .card-page-content {
-    width: 111.111%;
-    height: 111.111%;
-    transform: scale(0.9);
-    transform-origin: top left;
-  }
-
   .tag-text {
     display: inline-block;
     transform: translateY(-0.06em);
