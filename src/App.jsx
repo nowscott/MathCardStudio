@@ -1,4 +1,4 @@
-import html2canvas from "html2canvas";
+import { toPng } from "html-to-image";
 import React, { useCallback, useMemo, useRef, useState } from "react";
 import { ArchivePanel } from "./components/ArchivePanel.jsx";
 import { BlockDetail } from "./components/KnowledgeCard.jsx";
@@ -38,15 +38,17 @@ export default function App() {
   async function downloadNode(node, fileName) {
     if (!node) return;
 
-    const canvas = await html2canvas(node, {
-      backgroundColor: null,
-      scale: 3,
-      useCORS: true,
+    await document.fonts?.ready;
+
+    const dataUrl = await toPng(node, {
+      cacheBust: true,
+      pixelRatio: 3,
+      backgroundColor: "transparent",
     });
 
     const link = document.createElement("a");
     link.download = fileName;
-    link.href = canvas.toDataURL("image/png");
+    link.href = dataUrl;
     link.click();
   }
 
